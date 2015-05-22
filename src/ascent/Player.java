@@ -26,7 +26,7 @@ public class Player {
     }
 
     public void move() {
-        if (x + xa > 0 && x + xa < ascent.getWidth() - WIDTH) {
+        if ((x + xa > 0) && (x + xa < ascent.getWidth() - WIDTH)) {
             x = x + xa;
         }
 
@@ -53,15 +53,11 @@ public class Player {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             xa = -5;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_D) {
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
             xa = 5;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_W) {
+        } else if (e.getKeyCode() == KeyEvent.VK_W) {
             ya = 4;
-        }
-
-        if (e.getKeyCode() == KeyEvent.VK_S) {
+        } else if (e.getKeyCode() == KeyEvent.VK_S) {
             ya = -4;
         }
     }
