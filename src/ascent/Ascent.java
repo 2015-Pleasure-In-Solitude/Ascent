@@ -12,6 +12,9 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -54,7 +57,18 @@ public class Ascent extends JPanel {
     public void paint(Graphics g) {
 
         super.paint(g);
-        Image img = new ImageIcon("/Users/sofyashipova/NetBeansProjects/Ascent/src/backgrounds/Basic.png").getImage();
+//        Image img = ResourceTools.   ImageIcon("/backgrounds/Basic.png").getImage();
+//        Image img = new ImageIcon("/Users/sofyashipova/NetBeansProjects/Ascent/src/backgrounds/Basic.png").getImage();
+//        Image img = getResource("Resources/AppleMan.png");
+        Image img = null;   
+        try {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("backgrounds/Basic.png");
+            img = ImageIO.read(input);
+        } catch (IOException e) {
+            //TODO - exception handling
+        }
+
         g.drawImage(img, 0, 0, 3000, getHeight(), null);
 
         Graphics2D g2d = (Graphics2D) g;
