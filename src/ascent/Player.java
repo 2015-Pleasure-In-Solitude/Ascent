@@ -44,9 +44,13 @@ public class Player {
 
 
     public void move() {
+
         
         if (x + xa > 0 && x + xa < ascent.getWidth() - WIDTH) {
-            x = x + xa;
+
+            if ((x + xa > 0) && (x + xa < ascent.getWidth() - WIDTH)) {
+
+                x = x + xa;
             ascent.x = ascent.x + xback;
         } else if (x + xa >= ascent.getWidth() - WIDTH) {
             xback -= 50;
@@ -77,7 +81,7 @@ public class Player {
         }
 
     }
-
+    }
     public void paint(Graphics2D g) {
 
         
@@ -103,6 +107,7 @@ public class Player {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             xa = -5;
+
             xback = 2;
 
             
@@ -113,10 +118,13 @@ public class Player {
 
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            ya = 4;
-        }
 
-        if (e.getKeyCode() == KeyEvent.VK_S) {
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
+            xa = 5;
+        } else if (e.getKeyCode() == KeyEvent.VK_W) {
+
+            ya = 4;
+        } else if (e.getKeyCode() == KeyEvent.VK_S) {
             ya = -4;
         }
     }

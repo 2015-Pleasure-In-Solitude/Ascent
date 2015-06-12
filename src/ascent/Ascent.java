@@ -12,6 +12,13 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
+
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -60,9 +67,22 @@ public class Ascent extends JPanel {
     public void paint(Graphics g) {
 
         super.paint(g);
+
         Image img = loadImageFromResource("backgrounds/L12.png");
         g.drawImage(img, x, 0, 5000, getHeight(), null);
 
+
+        try {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("backgrounds/L12.png");
+            img = ImageIO.read(input);
+        } catch (IOException e) {
+            //TODO - exception handling
+        }
+
+        g.drawImage(img, 0, 0, 3000, getHeight(), null);
+
+        
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
