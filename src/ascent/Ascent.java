@@ -5,16 +5,14 @@
  */
 package ascent;
 
-import java.awt.Color;
+import static ascent.loadImageFromResource.loadImageFromResource;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -23,10 +21,15 @@ import javax.swing.JPanel;
  */
 public class Ascent extends JPanel {
 
-    Ground ground = new Ground(this);
-    Player player = new Player(this);
+    Ground ground;
+    Player player;
+    loadImageFromResource loadI;
+    int x = 0;
 
     public Ascent() {
+        ground = new Ground(this);
+        player = new Player(this);
+        loadI = new loadImageFromResource(this);
 
         addKeyListener(new KeyListener() {
             @Override
@@ -49,13 +52,16 @@ public class Ascent extends JPanel {
     public void move() {
         player.move();
     }
+    
+
+    
 
     @Override
     public void paint(Graphics g) {
 
         super.paint(g);
-        Image img = new ImageIcon("/Users/sofyashipova/NetBeansProjects/Ascent/src/backgrounds/Basic.png").getImage();
-        g.drawImage(img, 0, 0, 3000, getHeight(), null);
+        Image img = loadImageFromResource("backgrounds/L12.png");
+        g.drawImage(img, x, 0, 5000, getHeight(), null);
 
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -63,9 +69,9 @@ public class Ascent extends JPanel {
 
         ground.paint(g2d);
         player.paint(g2d);
-
     }
 
+    
     public static void main(String[] args) throws InterruptedException {
 
         JFrame frame = new JFrame("The Ascent");
@@ -84,7 +90,7 @@ public class Ascent extends JPanel {
         while (true) {
             ascent.move();
             ascent.repaint();
-            Thread.sleep(10);
+            Thread.sleep(30);
         }
     }
 
