@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ascent;
 
 //import ascent.SpriteSheetLoader;
@@ -65,7 +60,7 @@ public class Player {
         else if (x + xa >= ascent.getWidth() - WIDTH) {
             xback -= 50;
             x = 0;
-        }
+        } 
 
     }
     }
@@ -94,10 +89,7 @@ public class Player {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_A) {
             xa = -5;
-
             xback = 2;
-            ya = -4;
-
             
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
