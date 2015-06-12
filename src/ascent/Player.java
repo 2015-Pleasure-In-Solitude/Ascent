@@ -51,7 +51,7 @@ public class Player {
             if ((x + xa > 0) && (x + xa < ascent.getWidth() - WIDTH)) {
                 x = x + xa;
             ascent.x = ascent.x + xback;
-        } 
+        }    
 
         if (Y - ya > 0) {
             Y = Y - ya;
@@ -62,6 +62,10 @@ public class Player {
             Y = ascent.ground.getTopY() - HEIGHT;
             
         } 
+        else if (x + xa >= ascent.getWidth() - WIDTH) {
+            xback -= 50;
+            x = 0;
+        }
 
     }
     }
@@ -83,7 +87,7 @@ public class Player {
     public void keyReleased(KeyEvent e) {
         xa = 0;
         ya = 0;
-        xback = 0;  
+        xback = 0;
 
     }
 
@@ -99,10 +103,6 @@ public class Player {
         if (e.getKeyCode() == KeyEvent.VK_D) {
             xa = 5;
             xback = -2;
-            if (x + xa >= ascent.getWidth() - WIDTH) {
-            xback -= 50;
-            x = 0;
-        }   
 
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
