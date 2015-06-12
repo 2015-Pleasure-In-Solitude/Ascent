@@ -6,10 +6,7 @@
 package ascent;
 
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.Polygon;
-import java.util.Arrays;
-import java.util.OptionalInt;
 
 
 
@@ -39,15 +36,10 @@ public class Ground {
     }
 
     public void paint(Graphics2D g) {
-        //    g.fillRect(X, Y, WIDTH, HEIGHT);
-
         //g.fillPolygon(xpoints, ypoints, npoints);
 
     }
 
-    /*    public Rectangle getBounds() {
-     return new Rectangle(X, Y, WIDTH, HEIGHT);
-     }*/
     public Polygon getBoundsP() {
         return new Polygon(xpoints, ypoints, npoints);
 

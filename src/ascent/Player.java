@@ -49,16 +49,9 @@ public class Player {
         if (x + xa > 0 && x + xa < ascent.getWidth() - WIDTH) {
 
             if ((x + xa > 0) && (x + xa < ascent.getWidth() - WIDTH)) {
-
                 x = x + xa;
             ascent.x = ascent.x + xback;
-        } else if (x + xa >= ascent.getWidth() - WIDTH) {
-            xback -= 50;
-            x = 0;
-        }   else if (x + xa <= ascent.getWidth() - WIDTH) {
-            xback += 50;
-            x = 0;
-        }
+        } 
 
         if (Y - ya > 0) {
             Y = Y - ya;
@@ -68,17 +61,7 @@ public class Player {
             ya = -1;
             Y = ascent.ground.getTopY() - HEIGHT;
             
-        }
-        
-        if (x == 0) {
-            path = idle;
-        }
-        else if (x > 0) {
-            path = run;
-        }
-        else if (x < 0) {
-            path = run;
-        }
+        } 
 
     }
     }
@@ -100,7 +83,7 @@ public class Player {
     public void keyReleased(KeyEvent e) {
         xa = 0;
         ya = 0;
-        xback = 0;
+        xback = 0;  
 
     }
 
@@ -109,12 +92,17 @@ public class Player {
             xa = -5;
 
             xback = 2;
+            ya = -4;
 
             
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
             xa = 5;
             xback = -2;
+            if (x + xa >= ascent.getWidth() - WIDTH) {
+            xback -= 50;
+            x = 0;
+        }   
 
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
@@ -123,9 +111,9 @@ public class Player {
             xa = 5;
         } else if (e.getKeyCode() == KeyEvent.VK_W) {
 
-            ya = 4;
+            //ya = 4;
         } else if (e.getKeyCode() == KeyEvent.VK_S) {
-            ya = -4;
+            //ya = -4;
         }
     }
 

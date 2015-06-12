@@ -12,10 +12,14 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 
@@ -68,8 +72,7 @@ public class Ascent extends JPanel {
 
         super.paint(g);
 
-        Image img = loadImageFromResource("backgrounds/L12.png");
-        g.drawImage(img, x, 0, 5000, getHeight(), null);
+        Image img = null;
 
 
         try {
@@ -77,10 +80,9 @@ public class Ascent extends JPanel {
             InputStream input = classLoader.getResourceAsStream("backgrounds/L12.png");
             img = ImageIO.read(input);
         } catch (IOException e) {
-            //TODO - exception handling
         }
 
-        g.drawImage(img, 0, 0, 3000, getHeight(), null);
+        g.drawImage(img, x, 0, 5000, getHeight(), null);
 
         
         Graphics2D g2d = (Graphics2D) g;
@@ -110,7 +112,7 @@ public class Ascent extends JPanel {
         while (true) {
             ascent.move();
             ascent.repaint();
-            Thread.sleep(30);
+            Thread.sleep(10);
         }
     }
 
